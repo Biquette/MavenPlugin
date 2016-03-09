@@ -1,0 +1,36 @@
+
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+
+import java.io.File;
+import java.util.List;
+
+/**
+ * Echos an object string to the output screen.
+ *
+ * @goal chloe
+ * @requiresProject false
+ */
+public class MyMojo extends AbstractMojo {
+
+
+    /**
+     * The source directories containing the sources to be processed.
+     *
+     * @parameter expression="${project.compileSourceRoots}"
+     * @required
+     * @readonly
+     */
+    private List<String> compileSourceRoots;
+
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        //do nothing
+
+
+        for (String st : compileSourceRoots) {
+            getLog().info(st);
+            File f = new File(st);
+        }
+    }
+}
